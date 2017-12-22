@@ -1,0 +1,167 @@
+# File name: MainGUI.py
+#: kivy 1.8.0
+#: import FadeTransition kivy.uix.screenmanager.FadeTransition
+
+<Label>:
+    color:0,0,0,1
+    font_size:15
+    canvas.before:
+        Color:
+            rgb: 0.94, 0.94, 0.94
+        Rectangle:
+            pos: self.pos
+            size: self.size
+<Button>:
+    color:0,1,0,1
+    font_size:15
+    size_hint:0.2,0.1
+    background_color: 0.09, 0.53, 0.92,1.0
+<CheckBox>:
+
+    canvas.before:
+        Color:
+            rgb: 0.71, 0.73, 0.78
+        Rectangle:
+            pos:self.center_x-15, self.center_y-15
+            size:[30,30]
+
+
+
+
+<LoadDialog>:
+    id: load_log
+    BoxLayout:
+        size: root.size
+        pos: root.pos
+        orientation: "vertical"
+        FileChooserIconView:
+            id: filechooser
+
+            show_hidden:True
+            on_selection: root.load(filechooser.selection)
+
+            BoxLayout:
+                size_hint_y: None
+                height: 30
+                Button:
+                    text: "Cancel"
+                    on_release: root.cancel()
+<DownloadChooser>:
+
+    Button:
+        text:"All In One"
+        pos_hint:{"center_x":0.5,"center_y":0.6}
+        on_release:root.listen(self)
+    Button:
+        text:"Wallet Public Key"
+        pos_hint:{"center_x":0.2,"center_y":0.4}
+        on_release:root.listen(self)
+    Button:
+        text:"Wallet Transaction"
+        pos_hint:{"center_x":0.5,"center_y":0.4}
+        on_release:root.listen(self)
+    Button:
+        text:"Detailed Transaction"
+        pos_hint:{"center_x":0.8,"center_y":0.4}
+        on_release:root.listen(self)
+
+<DownloaderScreen>:
+
+    name:"downloader"
+    BoxLayout:
+        orientation: 'vertical'
+        padding:0
+        spacing:0
+        size_hint:1,1
+        Button:
+            size_hint: 1,0.1
+            text: "Return"
+
+            on_release:app.root.current = "chooser"
+        GridLayout:
+            size_hint: 1, 0.1
+            cols:4
+            CheckBox:
+                id:cb_text
+                group:"input_type"
+                active:True
+                on_press:root.checkState()
+            Label:
+                text: "Input WalletID"
+
+            CheckBox:
+                id:cb_file
+                group:"input_type"
+                on_press:root.checkState()
+            Label:
+                text: "Load File"
+
+
+
+        BoxLayout:
+            size_hint:1,0.4
+            TextInput:
+                id:ti_walletid
+                size_hint:0.5,1
+            TextInput:
+                id: file_path_label
+                disabled : True
+                multiline:True
+                size_hint:0.25,1
+                text:""
+                valign: 'middle'
+                halign: 'right'
+            Button:
+                id:btn_load
+                disabled : True
+                text:'Load'
+
+                size_hint: 0.25,1
+                on_release: root.show_load()
+        BoxLayout:
+            size_hint:1,0.1
+
+            Button:
+                id:download_btn
+                text:"Download"
+                size_hint:1,1
+                on_release:root.downloadTask()
+        BoxLayout:
+            size_hint:1,0.1
+            padding:20
+            ProgressBar:
+                id:progress
+                max:1000
+                value:0
+                size_hint:0.9,1
+            Label:
+                text:"Progress"
+                size_hint:0.1,1
+        BoxLayout:
+            size_hint:1,0.2
+            Label:
+                id:hint
+                size_hint:1,1
+                text:"hint"
+
+
+
+
+
+
+
+<ScreenManagement>:
+    id: screen_manager
+    transition: FadeTransition()
+
+    screen_one:screen_one
+    screen_two:screen_two
+
+    DownloadChooser:
+        id: screen_one
+        name:"chooser"
+        manager: screen_manager
+    DownloaderScreen:
+        id: screen_two
+        name:"downloader"
+        manager: screen_manager
