@@ -31,4 +31,10 @@ Please refer to the Chinese user guide at [https://www.youtube.com/playlist?list
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?list=PLPkz3Ny42tJvy0EX52METmHn4XfE70p61&amp;ecver=1" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
 
+## Bitcoin donations
+
+3LDCkUA9hyMgqX5c8FJY4EVy1Mpem4Vjf4
+
+
+
 
