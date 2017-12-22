@@ -29,7 +29,7 @@ There are three kinds of information. All these information are public and avail
 
 Please refer to the Chinese user guide at [https://www.youtube.com/playlist?list=PLPkz3Ny42tJvy0EX52METmHn4XfE70p61](https://www.youtube.com/playlist?list=PLPkz3Ny42tJvy0EX52METmHn4XfE70p61)
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?list=PLPkz3Ny42tJvy0EX52METmHn4XfE70p61&amp;ecver=1" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
+
 
 ## Bitcoin donations
 
